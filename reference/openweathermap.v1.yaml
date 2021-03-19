@@ -153,6 +153,40 @@ paths:
                   dateOfBirth: '1996-08-24'
         description: Post the necessary fields for the API to create a new user.
       description: Create a new user.
+  /weather:
+    get:
+      summary: weather
+      tags:
+        - Weather endpoints
+      responses: {}
+      operationId: get-weather
+      description: 'Access current weather data for any location on Earth including over 200,000 cities! Current weather is frequently updated based on global models and data from more than 40,000 weather stations.'
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: zip
+          description: '**Zip code**. Search by zip code. *Example: 95050,us*. Please note that if the country is not specified, the search uses USA as a default.'
+          required: true
+        - schema:
+            type: string
+            default: standard
+            enum:
+              - standard
+              - metric
+              - imperial
+          in: query
+          name: units
+          description: '**Units**. *Example: imperial*. Possible values: `standard`, `metric`, and `imperial`. When you do not use the `units` parameter, the format is `standard` by default.'
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: q
+          description: '**City name**. *Example: London*. You can call by city name, or by city name and country code. The API responds with a list of results that match a searching word. For the query value, type the city name and optionally the country code divided by a comma; use ISO 3166 country codes.'
+      security:
+        - app_id: []
+    parameters: []
 components:
   schemas:
     User:
