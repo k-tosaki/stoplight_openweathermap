@@ -194,11 +194,7 @@ paths:
           in: query
           name: lat
           description: '**Latitude**. *Example: 35*. The latitude coordinate of the location of your interest. Must use with `lon`.'
-        - schema:
-            type: string
-          in: query
-          name: lon
-          description: ' **Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat `.'
+        - $ref: '#/components/parameters/lon'
         - schema:
             type: string
             default: en
@@ -219,6 +215,13 @@ paths:
         - app_id: []
     parameters: []
 components:
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: '**Longitude**. *Example: 139*. Longitude coordinate of the location of your interest. Must use with `lat`.'
+      schema:
+        type: string
   schemas:
     User:
       title: User
